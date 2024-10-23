@@ -2,19 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><%= restaurant.name %> Menu</title>
+    <title><%= restaurant %> Menu</title>
     <link rel="stylesheet" href="/styles.css">
+    <!-- Other head elements -->
 </head>
 <body>
-    <h1><%= restaurant.name %> Menu</h1>
-    <h2>Cuisine: <%= menu.cuisine %></h2>
+    <h1><%= restaurant %> Menu</h1>
     <ul>
         <% menu.items.forEach(item => { %>
             <li>
-                <div class="menu-details">
-                    <strong><%= item.name %></strong>: <%= item.description %> - $<%= item.price %>
-                    <% if (item.special) { %> <em>(Daily Special)</em> <% } %>
-                </div>
+                <strong><%= item.name %></strong>: <%= item.description %> - $<%= item.price %>
+                <% if (item.special) { %> <em>(Daily Special)</em> <% } %>
             </li>
         <% }) %>
     </ul>
