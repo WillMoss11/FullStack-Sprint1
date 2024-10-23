@@ -18,8 +18,10 @@
     </form>
 
     <div class="random-item">
-    <h3>Random Menu Item:</h3>
-    <p><%= randomItem.name %>: <%= randomItem.description %> - $<%= randomItem.price %></p>
+        <h3>Random Menu Item:</h3>
+        <p class="random-item-details">
+            <strong><%= randomMenuItem.item.name %></strong> from <%= randomMenuItem.restaurant %>: <%= randomMenuItem.item.description %> - $<%= randomMenuItem.item.price %>
+        </p>
     </div>
 </body>
 </html>
