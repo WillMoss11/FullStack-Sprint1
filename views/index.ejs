@@ -20,7 +20,8 @@
     <div class="random-item">
         <h3>Random Menu Item:</h3>
         <p class="random-item-details">
-            <strong><%= randomMenuItem.item.name %></strong> from <%= randomMenuItem.restaurant %>: <%= randomMenuItem.item.description %> - $<%= randomMenuItem.item.price %>
+            <strong><%= randomMenuItem.item.name %></strong> from <%= randomMenuItem.restaurant %> (Cuisine: <strong><%= randomMenuItem.cuisine %></strong>): <%= randomMenuItem.item.description %> - $<%= randomMenuItem.item.price.toFixed(2) %></p>
+
         </p>
     </div>
 </body>

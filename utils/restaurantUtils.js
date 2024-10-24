@@ -12,14 +12,14 @@ const menuData = {
   "The Gourmet Bistro": [
       { name: "Truffle Pasta", description: "Pasta with truffle oil", price: 15.99, special: false },
       { name: "Seared Salmon", description: "Salmon with lemon butter", price: 22.99, special: true },
-      // Add more items...
+      
   ],
   "Spicy Kitchen": [
       { name: "Chicken Curry", description: "Spicy chicken curry", price: 12.99, special: false },
       { name: "Spicy Noodles", description: "Noodles with chili sauce", price: 10.99, special: true },
-      // Add more items...
+      
   ],
-  // Other restaurants...
+  
 };
 
 // Cuisine types
@@ -53,8 +53,6 @@ function generateMenu(restaurantName) {
   };
 }
 
-
-
 // Function to select a random cuisine type
 function selectRandomCuisine() {
   const randomIndex = Math.floor(Math.random() * Cuisines.length);
@@ -68,4 +66,5 @@ module.exports = {
   selectRandomCuisine,
   Cuisines
 };
+
 

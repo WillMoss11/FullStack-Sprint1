@@ -5,6 +5,9 @@ const PORT = 3000;
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 
+// Serve static files from the public directory
+app.use(express.static('public'));
+
 // Sample data for restaurants
 const restaurants = [
     { name: "The Gourmet Bistro", cuisine: "French" },
@@ -38,7 +41,7 @@ const menuData = {
         { name: "Avocado Toast", description: "Toast topped with avocado", price: 7.99, special: false },
         { name: "Chickpea Salad", description: "Protein-rich chickpea salad", price: 8.99, special: false },
         { name: "Fruit Bowl", description: "Fresh seasonal fruits", price: 6.99, special: true },
-        { name: "Grilled Vegetable Wrap", description: "Vegetables wrapped in a tortilla", price: 10.99 },
+        { name: "Grilled Vegetable Wrap", description: "Vegetables wrapped in a tortilla", price: 10.99 }
     ],
     "Comfort Diner": [
         { name: "Cheeseburger", description: "Juicy cheeseburger", price: 10.99, special: false },
@@ -58,7 +61,6 @@ const menuData = {
     ]
 };
 
-
 // Function to generate random menu items
 function generateRandomMenuItem() {
     const randomRestaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
@@ -71,6 +73,7 @@ function generateRandomMenuItem() {
     const randomItem = items[Math.floor(Math.random() * items.length)];
     return {
         restaurant: randomRestaurant.name,
+        cuisine: randomRestaurant.cuisine, // Add cuisine here
         item: randomItem
     };
 }
@@ -90,19 +93,16 @@ function generateMenu(restaurantName) {
 
     return {
         restaurant: restaurantName,
-        cuisine: restaurant.cuisine, // Add this line
+        cuisine: restaurant.cuisine, // Retrieve cuisine type
         items: items.slice(0, 6) // Return up to 6 items
     };
 }
 
-
 // Route for home page
 app.get('/', (req, res) => {
-    const randomMenuItem = generateRandomMenuItem(); // Now this returns an object with restaurant and item
+    const randomMenuItem = generateRandomMenuItem(); // Returns an object with restaurant and item
     res.render('index', { restaurants, randomMenuItem });
 });
-
-
 
 // Route for restaurant menu page
 app.get('/menu/:restaurant', (req, res) => {
@@ -113,14 +113,9 @@ app.get('/menu/:restaurant', (req, res) => {
     }
 
     const menu = generateMenu(restaurantName);
-
-    // Log the menu object to check its contents
-    console.log(menu); // Add this line to log the menu object
-
+    console.log(menu); // Log the menu object to check its contents
     res.render('menu', { menu, restaurant: restaurantName }); // Pass the menu object correctly
-
 });
-
 
 // Route for menu alerts page
 app.get('/alerts', (req, res) => {
@@ -135,5 +130,3 @@ app.get('/alerts', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-app.use(express.static('public'));
