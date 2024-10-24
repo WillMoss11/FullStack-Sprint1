@@ -10,22 +10,20 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
-/**
- * GET /
+/*
  * Renders the homepage that lists cities and restaurant names.
  */
 app.get('/', (request, response) => {
     response.render('index', { restaurants: Restaurants });
 });
 
-/**
- * GET /restaurant
+/*
  * Displays a specific restaurant's random menu.
  * The cuisine is randomly selected and a menu is generated based on it.
  */
 app.get('/restaurant', (request, response) => {
     const restaurantId = request.query.restaurantId;
-    console.log(`restaurantId: ${restaurantId}`); // Corrected template literal
+    console.log(`restaurantId: ${restaurantId}`); // Corrected template
 
     // Logic to get the restaurant's menu
     const restaurant = Restaurants.find(r => r.id === restaurantId);
@@ -37,10 +35,9 @@ app.get('/restaurant', (request, response) => {
     const randomMenuItem = generateRandomMenuItem(restaurant.name);
     const menu = generateMenu(restaurant.name); // Generate the full menu
 
-    response.render('restaurant', { restaurant, randomMenuItem, menu }); // Make sure you have a 'restaurant.ejs' view
+    response.render('restaurant', { restaurant, randomMenuItem, menu });
 });
 
-// Add any other required routes here
 
 const port = 3000;
 app.listen(port, () => {

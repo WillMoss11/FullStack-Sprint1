@@ -59,7 +59,7 @@ function selectRandomCuisine() {
   return Cuisines[randomIndex];
 }
 
-// Export functions as needed
+// Export functions
 module.exports = {
   generateRandomMenuItem,
   generateMenu,

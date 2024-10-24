@@ -117,7 +117,7 @@ app.get('/menu/:restaurant', (req, res) => {
     res.render('menu', { menu, restaurant: restaurantName }); // Pass the menu object correctly
 });
 
-// Route for menu alerts page
+// For menu alerts page
 app.get('/alerts', (req, res) => {
     const alerts = restaurants.map(r => ({
         name: r.name,
