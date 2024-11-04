@@ -1,10 +1,10 @@
 const { Restaurants, Cuisines } = require("./utils/data");
 const express = require('express');
 const path = require('path');
-const { generateRandomMenuItem, generateMenu, selectRandomCuisine } = require("./utils/restaurantUtils");
+const { generateRandomMenuItem, generateMenu} = require("./utils/restaurantUtils");
 
 const app = express();
-let restaurantData = {}; // This should be populated soon
+let restaurantData = {}; // This is just an example.
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +23,7 @@ app.get('/', (request, response) => {
  */
 app.get('/restaurant', (request, response) => {
     const restaurantId = request.query.restaurantId;
-    console.log(`restaurantId: ${restaurantId}`); // Corrected template
+    console.log(`restaurantId: ${restaurantId}`); // Corrected the template
 
     // Logic to get the restaurant's menu
     const restaurant = Restaurants.find(r => r.id === restaurantId);
